@@ -12,21 +12,17 @@ Template.devsList.helpers({
     },
 
     stateClass() {
-        // let currentDevId = Session.get('currentDev')
-        // let rowDevId = this._id
-
-        // if (currentDevId === rowDevId) {
-        //     return "active"
-        // }
-        // 
-        console.log(Session.equals('currentDev', this._id))
-        return Session.equals('currentDev', this._id) ? 'active' : ''
+        //console.log(Session.equals('currentDev', this._id))
+        return Session.equals('currentDev', this._id) ? 'indigo lighten-4' : ''
     }
 })
 
 
 Template.devsList.events({
-    'click td.devName' : function(e) {
+    'click td.devName': function(e) {
         Session.set('currentDev', this._id)
+    },
+    'click button.voteBtn': function(e) {
+        console.log(Session.get('currentDev'))
     }
 })
