@@ -1,0 +1,12 @@
+<template name="devsList">
+{{titleList}} :
+    <ul>
+    {{#each devs}}
+        {{#if votes}}
+            <li>{{name}} has {{votes}} votes </li>
+        {{else}}
+            <li>{{name}} has no vote</li>
+        {{/if}}
+    {{/each}}
+    </ul>
+</template>
