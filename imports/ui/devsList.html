@@ -1,12 +1,22 @@
 <template name="devsList">
 {{titleList}} :
-    <ul>
-    {{#each devs}}
-        {{#if votes}}
-            <li>{{name}} has {{votes}} votes </li>
-        {{else}}
-            <li>{{name}} has no vote</li>
-        {{/if}}
+
+<table>
+    <thead>
+        <tr>
+            <th data-field="name">Name</th>
+            <th data-field="votes">Votes</th>
+        </tr>
+    </thead>
+
+    <tbody>
+    {{#each getDevs}}
+        <tr>
+            <td class="devName">{{name}}</td>
+            <td>{{votes}}</td>
+        </tr>
     {{/each}}
-    </ul>
+    </tbody>
+</table>
+        
 </template>
