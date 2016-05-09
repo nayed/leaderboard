@@ -1,6 +1,5 @@
 Template.footer.helpers({
     copyright() {
-        console.log('helper called')
-        return Spacebars.SafeString('&copy; Nayed 2016')
+        return Spacebars.SafeString('&copy; Nayed Saïd Ali - 2016')
     }
 })
