@@ -3,7 +3,6 @@ import { Session } from 'meteor/session'
 
 Template.devsList.helpers({
     getDevs() {
-        //console.log(Devs)
         return Devs.find({}, {sort: {votes:-1}})
     },
 
@@ -19,8 +18,23 @@ Template.devsList.helpers({
     deleteDev() {
         return Session.equals('currentDev', this._id) ? 
             `<button class="deleteDev waves-effect waves-light btn red darken-4">
-            <i class="Petite material-icons">delete</i></button>`
+            <i class="small material-icons">delete</i></button>`
             : ''
+    },
+
+    countDevs() {
+        let nbDevs = Devs.find().count()
+        console.log(nbDevs)
+        return nbDevs > 0 ? Spacebars.SafeString(`There are ${nbDevs} developers <i class="tiny material-icons">person_pin</i>`) : 'Nope'
+    },
+
+    getVoteCount() {
+        let votesCount = 0
+        Devs.find().map(doc => {
+            //console.log(doc)
+            votesCount += doc.votes
+        })
+        return votesCount
     }
 })
 
@@ -48,10 +62,8 @@ Template.devsList.events({
             closeOnConfirm: false,
             html: false
             }, function() {
-            Devs.remove(devId)
-            swal("Deleted!",
-            "Your user has been removed",
-            "success")
+                Devs.remove(devId)
+                swal("Deleted!", "Your user has been removed", "success")
         })
 
     }

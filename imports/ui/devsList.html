@@ -1,28 +1,30 @@
 <template name="devsList">
-{{titleList}} :
+    {{titleList}} :
 
-<table>
-    <thead>
-        <tr>
-            <th data-field="name">Name</th>
-            <th data-field="votes">Votes</th>
-            <th data-field="delete">Delete</th>
-        </tr>
-    </thead>
+    <p>{{countDevs}}</p>
+    <p>{{getVoteCount}} votes</p>
+    <table>
+        <thead>
+            <tr>
+                <th data-field="name">Name</th>
+                <th data-field="votes">Votes</th>
+                <th data-field="delete">Delete</th>
+            </tr>
+        </thead>
 
-    <tbody>
-    {{#each getDevs}}
-        <tr class="{{stateClass}}">
-            <td class="devName">{{name}}</td>
-            <td>{{votes}}</td>
-            <td>{{{deleteDev}}}</td>
-        </tr>
-    {{/each}}
-    </tbody>
-</table>
+        <tbody>
+        {{#each getDevs}}
+            <tr class="{{stateClass}}">
+                <td class="devName">{{name}}</td>
+                <td>{{votes}}</td>
+                <td>{{{deleteDev}}}</td>
+            </tr>
+        {{/each}}
+        </tbody>
+    </table>
 
-<br />
-<div>
-    <button class="voteBtn waves-effect waves-light btn indigo">Vote for this dev <i class="large material-icons">thumb_up</i></button>
-</div>
+    <br />
+    <div>
+        <button class="voteBtn waves-effect waves-light btn indigo">Vote for this dev <i class="large material-icons">thumb_up</i></button>
+    </div>
 </template>
