@@ -23,7 +23,7 @@ Template.devsList.helpers({
 
     countDevs() {
         let nbDevs = Devs.find().count()
-        console.log(nbDevs)
+        //console.log(nbDevs)
         return nbDevs > 0 ? Spacebars.SafeString(`There are ${nbDevs} developers <i class="tiny material-icons">person_pin</i>`) : 'Nope'
     },
 
