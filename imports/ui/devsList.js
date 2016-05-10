@@ -47,7 +47,7 @@ Template.devsList.events({
         Devs.update(devId, {$inc: {votes : 1}})
     },
 
-    'click button.deleteDev' : function(e) {
+    'click button.deleteDev': function(e) {
         let devId = Session.get('currentDev')
         swal({
             title: "Are you sure?",
@@ -62,6 +62,13 @@ Template.devsList.events({
                 Devs.remove(devId)
                 swal("Deleted!", "Your user has been removed", "success")
         })
+    },
 
+    'submit form#formAddDev': function(e) {
+        e.preventDefault()
+        let devName = e.target.fieldName.value
+        Devs.insert({name: devName, votes: 0})
+        swal("Added!", `Developer ${devName} was created`, "success")
+        e.target.fieldName.value = ''
     }
 })

@@ -3,9 +3,28 @@
         <div class="col s6">
             <i><u>{{titleList}}</u></i>
         </div>
+
         <div class="col s6 offset-s11">
             <span class="flow-text">
-                <a class="btn-floating btn-large waves-effect waves-light green lighten-2"><i class="material-icons">add</i></a>
+                <a class="waves-effect waves-light btn-floating btn-large green lighten-2 modal-trigger" href="#modalAddDev"><i class="material-icons">add</i></a>
+
+                <div id="modalAddDev" class="modal">
+                    <form class="col s12" id="formAddDev">
+                        <div class="modal-content">
+                            <h4>Add developer</h4>
+                                <div class="row">
+                                    <div class="input-field col s6 offset-s3">
+                                        <i class="material-icons prefix">account_circle</i>
+                                        <input id="fieldName" type="text" class="validate">
+                                        <label for="fieldName">Name</label>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                <button class=" modal-action modal-close waves-effect waves-green btn-flat" type="submit">Add</button>
+                            </div>
+                        </div>
+                    </form>                    
+                </div>
             </span>
         </div>
     </div>
@@ -15,6 +34,7 @@
         <br />
         {{getVoteCount}}
     </p>
+
     <table>
         <thead>
             <tr>
