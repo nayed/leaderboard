@@ -1,6 +1,4 @@
 import './body.html'
-// import './hello.html'
-// import './hello.js'
 import './footer.html'
 import './footer.js'
 import './devsList.html'

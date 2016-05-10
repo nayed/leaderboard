@@ -6,6 +6,7 @@
         <tr>
             <th data-field="name">Name</th>
             <th data-field="votes">Votes</th>
+            <th data-field="delete">Delete</th>
         </tr>
     </thead>
 
@@ -14,6 +15,7 @@
         <tr class="{{stateClass}}">
             <td class="devName">{{name}}</td>
             <td>{{votes}}</td>
+            <td>{{{deleteDev}}}</td>
         </tr>
     {{/each}}
     </tbody>
@@ -21,6 +23,6 @@
 
 <br />
 <div>
-    <button class="voteBtn waves-effect waves-light btn indigo">Vote for this dev</button>
+    <button class="voteBtn waves-effect waves-light btn indigo">Vote for this dev <i class="large material-icons">thumb_up</i></button>
 </div>
 </template>
