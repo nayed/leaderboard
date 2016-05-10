@@ -11,7 +11,6 @@ Template.devsList.helpers({
     },
 
     stateClass() {
-        //console.log(Session.equals('currentDev', this._id))
         return Session.equals('currentDev', this._id) ? 'indigo lighten-4' : ''
     },
 
@@ -31,10 +30,9 @@ Template.devsList.helpers({
     getVoteCount() {
         let votesCount = 0
         Devs.find().map(doc => {
-            //console.log(doc)
             votesCount += doc.votes
         })
-        return votesCount
+        return Spacebars.SafeString(`${votesCount} votes <i class="tiny material-icons">email</i>`)
     }
 })
 
@@ -45,7 +43,6 @@ Template.devsList.events({
     },
 
     'click button.voteBtn': function(e) {
-        //console.log(Session.get('currentDev'))
         let devId = Session.get('currentDev')
         Devs.update(devId, {$inc: {votes : 1}})
     },
