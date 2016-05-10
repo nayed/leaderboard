@@ -23,6 +23,8 @@ Template.devsList.events({
         Session.set('currentDev', this._id)
     },
     'click button.voteBtn': function(e) {
-        console.log(Session.get('currentDev'))
+        //console.log(Session.get('currentDev'))
+        let devId = Session.get('currentDev')
+        Devs.update(devId, {$inc: {votes : 1}})
     }
 })
