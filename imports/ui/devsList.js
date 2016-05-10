@@ -4,7 +4,7 @@ import { Session } from 'meteor/session'
 Template.devsList.helpers({
     getDevs() {
         //console.log(Devs)
-        return Devs.find()
+        return Devs.find({}, {sort: {votes:-1}})
     },
 
     hasVotes(votes) {
