@@ -14,13 +14,6 @@ Template.devsList.helpers({
         return Session.equals('currentDev', this._id) ? 'indigo lighten-4' : ''
     },
 
-    deleteDev() {
-        return Session.equals('currentDev', this._id) ? 
-            `<button class="deleteDev waves-effect waves-light btn red darken-4">
-            <i class="small material-icons">delete</i></button>`
-            : ''
-    },
-
     countDevs() {
         let nbDevs = Devs.find().count()
         //console.log(nbDevs)
@@ -45,35 +38,5 @@ Template.devsList.events({
     'click button.voteBtn': function(e) {
         let devId = Session.get('currentDev')
         Devs.update(devId, {$inc: {votes : 1}})
-    },
-
-    'click button.deleteDev': function(e) {
-        let devId = Session.get('currentDev')
-        swal({
-            title: "Are you sure?",
-            text: "This developer will be remove from the board!",
-            type: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#DD6B55",
-            confirmButtonText: "Yes, delete it!",
-            closeOnConfirm: false,
-            html: false
-            }, function() {
-                Devs.remove(devId)
-                swal("Deleted!", "Your user has been removed", "success")
-        })
-    },
-
-    'click #modalAdd': function(e) {
-        e.preventDefault()
-        $('.modal-trigger').leanModal()
-    },
-
-    'submit form#formAddDev': function(e) {
-        e.preventDefault()
-        let devName = e.target.fieldName.value
-        Devs.insert({name: devName, votes: 0})
-        swal("Added!", `Developer ${devName} was created`, "success")
-        e.target.fieldName.value = ''
     }
 })

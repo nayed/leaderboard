@@ -32,12 +32,12 @@ FlowRouter.route('/log-out', {
     }
 })
 
-privateRoutes.route('/my-account', {
-    name: 'myAccount',
+privateRoutes.route('/vote', {
+    name: 'vote',
     action: function() {
         BlazeLayout.render('layout1', {
             nav: 'navigation',
-            main: 'accountContent'
+            main: 'vote'
         })
     }
 })

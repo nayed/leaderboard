@@ -9,13 +9,13 @@
 <Template name="navigation">
     <nav>
         <div class="nav-wrapper deep-purple lighten-2">
-            <a href="/" class="brand-logo">UA Meteor</a>
+            <a href="/" class="brand-logo">Leaderboard</a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
                 <li class="{{isActiveRoute name='home'}}"><a href="{{pathFor 'home'}}">Home</a></li>
                 {{#unless currentUser}}
                     <li class="{{isActiveRoute name='signIn'}}"><a href="{{pathFor 'signIn'}}">Login</a></li>
                 {{else}}
-                    <li class="{{isActiveRoute name='myAccount'}}"><a href="{{pathFor 'myAccount'}}">My account</a></li>
+                    <li class="{{isActiveRoute name='vote'}}"><a href="{{pathFor 'vote'}}">Vote</a></li>
                     <li class="{{isActiveRoute name='logOut'}}"><a href="{{pathFor 'logOut'}}">Log out</a></li>
                 {{/unless}}
             </ul>
