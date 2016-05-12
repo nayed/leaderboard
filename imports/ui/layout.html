@@ -1,0 +1,60 @@
+<template name="layout1">
+    {{> Template.dynamic template=nav}}
+    <div class="container">
+        {{> Template.dynamic template=main}}
+    </div>
+</template>
+
+
+<Template name="navigation">
+    <nav>
+        <div class="nav-wrapper deep-purple lighten-2">
+            <a href="/" class="brand-logo">UA Meteor</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li class="{{isActiveRoute name='home'}}"><a href="{{pathFor 'home'}}">Home</a></li>
+                {{#unless currentUser}}
+                    <li class="{{isActiveRoute name='signIn'}}"><a href="{{pathFor 'signIn'}}">Login</a></li>
+                {{else}}
+                    <li class="{{isActiveRoute name='myAccount'}}"><a href="{{pathFor 'myAccount'}}">My account</a></li>
+                    <li class="{{isActiveRoute name='logOut'}}"><a href="{{pathFor 'logOut'}}">Log out</a></li>
+                {{/unless}}
+            </ul>
+        </div>
+    </nav>
+</Template>
+
+
+<Template name="authContent">
+    <div class="row">
+        <div class="col s6 offset-s3">
+            {{> atForm}}
+        </div>
+    </div>
+</Template>
+
+
+<Template name="addUserModal">
+    <div class="col s6 offset-s11">
+        <span class="flow-text">
+            <a class="waves-effect waves-light btn-floating btn-large green lighten-2 modal-trigger" href="#modalAddDev" id="modalAdd"><i class="material-icons">add</i></a>
+
+            <div id="modalAddDev" class="modal">
+                <form class="col s12" id="formAddDev">
+                    <div class="modal-content">
+                        <h4>Add developer</h4>
+                            <div class="row">
+                                <div class="input-field col s6 offset-s3">
+                                    <i class="material-icons prefix">account_circle</i>
+                                    <input id="fieldName" type="text" class="validate">
+                                    <label for="fieldName">Name</label>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                            <button class=" modal-action modal-close waves-effect waves-green btn-flat" type="submit">Add</button>
+                        </div>
+                    </div>
+                </form>                    
+            </div>
+        </span>
+    </div>
+</Template>

@@ -3,7 +3,7 @@ import { Session } from 'meteor/session'
 
 Template.devsList.helpers({
     getDevs() {
-        return Devs.find({}, {sort: {votes:-1}})
+        return Devs.find({}, {sort: {votes:1}})
     },
 
     hasVotes(votes) {
@@ -24,7 +24,7 @@ Template.devsList.helpers({
     countDevs() {
         let nbDevs = Devs.find().count()
         //console.log(nbDevs)
-        return nbDevs > 0 ? Spacebars.SafeString(`There are ${nbDevs} developers <i class="tiny material-icons">person_pin</i>`) : 'Nope'
+        return nbDevs > 0 ? Spacebars.SafeString(`There are ${nbDevs} developers <i class="tiny material-icons">person_pin</i>`) : 'There are no developer'
     },
 
     getVoteCount() {
@@ -62,6 +62,11 @@ Template.devsList.events({
                 Devs.remove(devId)
                 swal("Deleted!", "Your user has been removed", "success")
         })
+    },
+
+    'click #modalAdd': function(e) {
+        e.preventDefault()
+        $('.modal-trigger').leanModal()
     },
 
     'submit form#formAddDev': function(e) {

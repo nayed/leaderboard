@@ -23,3 +23,9 @@ materialize:materialize
 session
 kit:sweetalert
 accounts-password
+service-configuration
+kadira:blaze-layout
+kadira:flow-router
+useraccounts:flow-routing
+arillo:flow-router-helpers
+useraccounts:materialize
