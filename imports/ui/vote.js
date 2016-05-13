@@ -44,7 +44,7 @@ Template.vote.helpers({
         let leftVotes = 0
         Meteor.call("nbVotesLeft", function(err, response) {
             if (err) return err
-            console.log(response.length)
+            //console.log(response.length)
             if (response.length > 0) {
                 Session.set("votedToday", response[0].count)
             }
@@ -78,6 +78,7 @@ Template.vote.events({
         let devId = Session.get('currentDev')
         Devs.update(devId, {$inc: {votes : 1}})
         Votes.insert({userId: Meteor.userId(), dateVote: strDayToday})
+        location.reload()   // <=== THAT'S SO UGLY I KNOW
     },
 
     'click button.deleteDev': function(e) {
