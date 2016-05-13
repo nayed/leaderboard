@@ -29,3 +29,4 @@ kadira:flow-router
 useraccounts:flow-routing
 arillo:flow-router-helpers
 useraccounts:materialize
+meteorhacks:aggregate

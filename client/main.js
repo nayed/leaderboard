@@ -10,7 +10,7 @@ import '../imports/configs/routes.js'
 BlazeLayout.setRoot('body')
 
 //T9n.setLanguage('fr_FR')
-
+//Meteor.call("nbVotesLeft")
 $(document).ready(function() {
     //$('.modal-trigger').leanModal()
 })

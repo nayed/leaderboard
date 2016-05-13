@@ -40,10 +40,16 @@ Template.vote.helpers({
     },
 
     nbVotesLeft() {
-        console.log(Votes.find({}).count())
+        // let pipeline = [{
+        //     $group: {
+        //         _id: {userId: "$userId", dateVote: "$dateVote"},
+        //         count: {$sum: 1}
+        //     }
+        // }]
+        // console.log(Votes.aggregate(pipeline))
         
-        console.log(strDayToday)
-        return ''
+        //console.log(Meteor.call("nbVotesLeft"))
+        return JSON.stringify(Meteor.call("nbVotesLeft"))
     }
 })
 
@@ -56,7 +62,7 @@ Template.vote.events({
     'click button.voteBtn': function(e) {
         let devId = Session.get('currentDev')
         Devs.update(devId, {$inc: {votes : 1}})
-        Votes.insert({userId: Meteor.userId(), vote: 1})
+        Votes.insert({userId: Meteor.userId(), dateVote: strDayToday})
     },
 
     'click button.deleteDev': function(e) {
