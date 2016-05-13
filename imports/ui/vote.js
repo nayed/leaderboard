@@ -40,19 +40,34 @@ Template.vote.helpers({
     },
 
     nbVotesLeft() {
-        // let pipeline = [{
-        //     $group: {
-        //         _id: {userId: "$userId", dateVote: "$dateVote"},
-        //         count: {$sum: 1}
-        //     }
-        // }]
-        // console.log(Votes.aggregate(pipeline))
+        let maxVote = 3
+        let leftVotes = 0
+        Meteor.call("nbVotesLeft", function(err, response) {
+            if (err) return err
+            console.log(response.length)
+            if (response.length > 0) {
+                Session.set("votedToday", response[0].count)
+            }
+        })
         
-        //console.log(Meteor.call("nbVotesLeft"))
-        return JSON.stringify(Meteor.call("nbVotesLeft"))
+        if (Session.get("votedToday")) {
+            leftVotes = maxVote - Session.get("votedToday")
+        }
+        else {
+            leftVotes = maxVote
+        }
+        return leftVotes
     }
 })
 
+Template.registerHelper('greaterThan', function(a, b) {
+    //console.log(a > b)
+    return a > b
+})
+
+Template.registerHelper('lessThan', function(a, b) {
+    return a < b
+})
 
 Template.vote.events({
     'click td.devName': function(e) {

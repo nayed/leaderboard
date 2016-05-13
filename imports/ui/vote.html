@@ -38,10 +38,16 @@
     <br />
     <div class="row">
         <div class="col s6">
-            <button class="voteBtn waves-effect waves-light btn indigo">Vote for this dev <i class="large material-icons">thumb_up</i></button>
+            {{#if greaterThan nbVotesLeft 0}}
+                <button class="voteBtn waves-effect waves-light btn indigo">Vote for this dev <i class="large material-icons">thumb_up</i></button>
+            {{/if}}
         </div>
         <div class="col s6 right-align">
-            {{nbVotesLeft}}
+            {{#if lessThan nbVotesLeft 1}}
+                You have reach your vote limit today
+            {{else}}
+                You have {{nbVotesLeft}} vote left
+            {{/if}}
         </div>
     </div>
 </template>
